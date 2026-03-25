@@ -6,7 +6,7 @@ from datetime import datetime
 from db.database import get_connection, init_db
 
 # ── CONFIG ──────────────────────────────────────────────────────────────────
-API_KEY  = os.getenv("NEWSAPI_KEY", "e2febadf954f472b8b38d2e6e3f0fe81")  # set as env variable
+API_KEY  = os.getenv("NEWSAPI_KEY", "Your_API_KEY_Here")  # set as env variable
 BASE_URL = "https://newsapi.org/v2/top-headlines"
 CATEGORY = "technology"   # change to: business | sports | science | health
 COUNTRY  = "us"
