@@ -77,6 +77,12 @@ python pipeline/flow.py
 uvicorn api.main:app --reload
 ```
 
+### 6. Alternative - Run this on terminal
+
+```bash
+runs.bat
+```
+
 Visit **http://127.0.0.1:8000/docs** for the interactive API docs.
 
 ---
@@ -99,6 +105,7 @@ docker-compose up --build
 | GET | `/search?q=keyword` | Full-text search |
 | GET | `/categories` | Article counts per category |
 | GET | `/stats` | Pipeline stats |
+| GET | `/scalar` | Scalar Documentation |
 
 ### Example request
 
@@ -127,16 +134,6 @@ curl "http://localhost:8000/articles?category=technology&limit=5"
 | Prefect | Pipeline orchestration & scheduling |
 | FastAPI | REST API layer |
 | Docker | Containerization |
-
----
-
-## 📈 Future Improvements
-
-- [ ] Migrate from SQLite to PostgreSQL
-- [ ] Add sentiment analysis on headlines (NLP layer)
-- [ ] Build a live dashboard with Streamlit
-- [ ] Add Elasticsearch for better full-text search
-- [ ] Deploy Prefect to Prefect Cloud for managed scheduling
 
 ---
 
