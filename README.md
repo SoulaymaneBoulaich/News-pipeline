@@ -32,6 +32,7 @@ news-pipeline/
 ├── docker-compose.yml
 ├── requirements.txt
 └── README.md
+└──runs.bat
 ```
 
 ---
