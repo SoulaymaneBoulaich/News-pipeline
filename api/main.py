@@ -3,14 +3,14 @@ Phase 3 — Serve It with FastAPI
 Run locally:  uvicorn api.main:app --reload
 Docs UI:      http://127.0.0.1:8000/docs
 """
-
+from scalar_fastapi import get_scalar_api_reference
 from fastapi import FastAPI, Query, HTTPException
 from pydantic import BaseModel
 from typing import Optional
 from db.database import get_connection
 
 app = FastAPI(
-    title="📰 News Pipeline API",
+    title="News Pipeline API",
     description="Query headlines collected by the automated news pipeline.",
     version="1.0.0",
 )
@@ -44,7 +44,7 @@ def query_db(sql: str, params: tuple = ()) -> list[dict]:
 
 @app.get("/", tags=["Health"])
 def root():
-    return {"status": "ok", "message": "News Pipeline API is running 🚀"}
+    return {"status": "ok", "message": "News Pipeline API is running"}
 
 
 @app.get("/articles", response_model=list[Article], tags=["Articles"])
@@ -119,3 +119,10 @@ def search_articles(
         LIMIT ?
     """, (f"%{q}%", f"%{q}%", limit))
     return rows
+
+@app.get("/scalar", include_in_schema=False)
+async def scalar_html():
+    return get_scalar_api_reference(
+        openapi_url=app.openapi_url,
+        title="Scalar Documentation"
+    )
